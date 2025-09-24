@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import inventoryImg from '../assets/inventory.jpg';
+import smartCanteenImg from '../assets/Smart-Canteen.jpg';
+import billingImg from '../assets/billing system.jpg';
+import visitorImg from '../assets/visitormanagement.jpg';
 
 const Projects: React.FC = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -11,7 +15,7 @@ const Projects: React.FC = () => {
       id: 1,
       title: 'School Inventory Management System',
       description: 'A comprehensive inventory management system for educational institutions',
-      image: 'https://images.pexels.com/photos/3184454/pexels-photo-3184454.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: inventoryImg,
       technologies: [ 'PHP', 'MySQL', 'phpMyAdmin'],
       demoUrl: 'https://kings.roririsoft.com',
       githubUrl: '#',
@@ -21,7 +25,7 @@ const Projects: React.FC = () => {
       id: 2,
       title: 'Smart Canteen System',
       description: 'AI-powered canteen management system with real-time ordering',
-      image: 'https://images.pexels.com/photos/3584994/pexels-photo-3584994.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: smartCanteenImg,
       technologies: ['ReactJS', 'Node.js', 'Express.js', 'PostgreSQL', 'TailwindCSS'],
       demoUrl: 'https://canteen-app-alpha.vercel.app',
       githubUrl: '#',
@@ -31,7 +35,7 @@ const Projects: React.FC = () => {
       id: 3,
       title: 'Billing Management System',
       description: 'Modal-based billing solution with GST calculations and reporting',
-      image: 'https://images.pexels.com/photos/3184639/pexels-photo-3184639.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: billingImg,
       technologies: ['JavaScript', 'HTML', 'CSS', 'PHP', 'MySQL'],
       demoUrl: 'https://sridevisnacks.vercel.app',
       githubUrl: '#',
@@ -41,7 +45,7 @@ const Projects: React.FC = () => {
       id: 4,
       title: 'Visitor Management System',
       description: 'Efficient visitor tracking and management system',
-      image: 'https://images.pexels.com/photos/3184302/pexels-photo-3184302.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: visitorImg,
       technologies: ['ReactJS', 'Node.js', 'MySQL', 'JavaScript'],
       demoUrl: 'https://visitor-registration-chi.vercel.app',
       githubUrl: '#',
