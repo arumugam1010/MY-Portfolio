@@ -43,15 +43,15 @@ const Projects: React.FC = () => {
     },
     {
       id: 4,
-      title: 'Visitor Management System',
+      title: 'QR Visitor Management System',
       description: 'Efficient visitor tracking and management system',
       image: visitorImg,
       technologies: ['ReactJS', 'Node.js', 'MySQL', 'JavaScript'],
       demoUrl: 'https://visitor-registration-chi.vercel.app',
       githubUrl: '#',
-      details: 'Visitor Management System designed to log, track, and manage visitors efficiently. Features include visitor registration, pass generation, check-in/check-out tracking, and comprehensive reporting dashboard.'
+      details:' A modern solution designed to log, track, and manage visitors efficiently. Key features include QR code–based visitor registration, real-time check-in tracking, and a comprehensive reporting dashboard for enhanced security and streamlined operations.'
     }
-  ];
+  ]; 
 
   return (
     <section id="projects" className="py-20 bg-indigo-50/40">
