@@ -13,7 +13,7 @@ const Projects: React.FC = () => {
   const projects = [
     {
       id: 1,
-      title: 'School Inventory Management System',
+      title: ' Inventory Management System',
       description: 'A comprehensive inventory management system for educational institutions',
       image: inventoryImg,
       technologies: [ 'PHP', 'MySQL', 'phpMyAdmin'],

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+   import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Send } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -12,8 +13,11 @@ const Contact: React.FC = () => {
     subject: '',
     message: ''
   });
-  // kept for future interactive focus styles; unused but harmless
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    emailjs.init('jbEr1TQGs7asGie1J');
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -22,7 +26,7 @@ const Contact: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
@@ -30,11 +34,29 @@ const Contact: React.FC = () => {
       return;
     }
 
-    const mailto = `mailto:saravananvlr1010@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-    )}`;
-    window.location.href = mailto;
-    toast.info("Opening your email client...");
+    setLoading(true);
+
+    try {
+      await emailjs.send(
+        'service_abzasdb',
+        'template_zq81aei',
+        {
+          name: 'Arumugam',
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          to_email: 'saravananvlr1010@gmail.com'
+        }
+      );
+      toast.success("Message sent successfully!");
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -171,8 +193,8 @@ const Contact: React.FC = () => {
                     loading ? "opacity-70 cursor-not-allowed" : "hover:from-indigo-600 hover:to-slate-700 hover:shadow-xl"
                   }`}
                 >
-                  <Send size={18} className="transition-transform duration-300 transform group-hover:translate-x-1" />
-                  {loading ? "Opening..." : "Send Message"}
+                  <Send size={18} className={`transition-transform duration-300 ${loading ? '' : 'transform group-hover:translate-x-1'}`} />
+                  {loading ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
